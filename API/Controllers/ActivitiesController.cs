@@ -27,5 +27,14 @@ namespace API.Controllers
     {
       return await _contex.Activities.FirstAsync(x=>x.Id == id);
     }
+
+    [HttpPost]
+    public ActionResult<Activity> AddActivity([FromBody]Activity activity)
+    {
+       _contex.Activities.Add(activity);
+     _contex.SaveChanges();
+      return activity;
+      
+    }
   }
 }
